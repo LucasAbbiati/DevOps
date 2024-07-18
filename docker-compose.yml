@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    
+    volumes:
+      - ./backend/data.json:/app/data.json
+
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    extra_hosts:
+      - "localhost:172.21.0.2"
+
+networks:
+  app-network:
+    driver: bridge
