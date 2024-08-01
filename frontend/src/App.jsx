@@ -12,17 +12,20 @@ const App = () => {
   }, []);
 
   const fetchBooks = async () => {
-    const response = await axios.get('http://localhost:8000/books');
+    // Modificado para incluir o prefixo '/api'
+    const response = await axios.get('/api/books');
     setBooks(response.data);
   };
 
   const addBook = async (book) => {
-    const response = await axios.post('http://localhost:8000/books', book);
+    // Modificado para incluir o prefixo '/api'
+    const response = await axios.post('/api/books', book);
     setBooks([...books, response.data]);
   };
 
   const deleteBook = async (id) => {
-    await axios.delete(`http://localhost:8000/books/${id}`);
+    // Modificado para incluir o prefixo '/api'
+    await axios.delete(`/api/books/${id}`);
     setBooks(books.filter(book => book.id !== id));
   };
 
