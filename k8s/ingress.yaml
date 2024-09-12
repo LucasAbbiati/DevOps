@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "biblioteca.k8s.local"
+  - host: "k8s.local"
     http:
       paths:
       - path: /
